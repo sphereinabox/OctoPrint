@@ -124,8 +124,8 @@ var analyzeModel = function () {
 
             if (typeof(cmds[j].x) !== 'undefined'
                     && typeof(cmds[j].prevX) !== 'undefined'
-                    && typeof(cmds[j].extrude) !== 'undefined'
-                    && cmds[j].extrude
+//                    && typeof(cmds[j].extrude) !== 'undefined'
+//                    && cmds[j].extrude
                     && !isNaN(cmds[j].x)) {
                 var x = cmds[j].x;
                 max.x = max.x !== undefined ? Math.max(max.x, x) : x;
@@ -136,8 +136,8 @@ var analyzeModel = function () {
 
             if (typeof(cmds[j].y) !== 'undefined'
                     && typeof(cmds[j].prevY) !== 'undefined'
-                    && typeof(cmds[j].extrude) !== 'undefined'
-                    && cmds[j].extrude
+//                    && typeof(cmds[j].extrude) !== 'undefined'
+//                    && cmds[j].extrude
                     && !isNaN(cmds[j].y)) {
                 var y = cmds[j].y;
 
@@ -148,8 +148,8 @@ var analyzeModel = function () {
             }
 
             if (typeof(cmds[j].prevZ) !== 'undefined'
-                    && typeof(cmds[j].extrude) !== 'undefined'
-                    && cmds[j].extrude
+//                    && typeof(cmds[j].extrude) !== 'undefined'
+//                    && cmds[j].extrude
                     && !isNaN(cmds[j].prevZ)) {
                 var z = cmds[j].prevZ;
                 max.z = max.z !== undefined ? Math.max(max.z, z) : z;
@@ -230,7 +230,7 @@ var doParse = function () {
     var layer = 0;
     var x, y, z = 0;
     var center_i, center_j, direction;
-    var prevX = 0, prevY = 0, prevZ = 0;
+    var prevX = 0, prevY = 0, prevZ = -1;
     var f, lastF = 4000;
     var extrude = false, extrudeRelative = false, retract = 0;
     var positionRelative = false;
@@ -245,6 +245,8 @@ var doParse = function () {
     var prev_extrude = [{a: 0, b: 0, c: 0, e: 0, abs: 0}];
     var prev_retract = [0];
     var offset = toolOffsets[0];
+
+debugger;
 
     model = [];
     for (var i = 0; i < gcode.length; i++) {
